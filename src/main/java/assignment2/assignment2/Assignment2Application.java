@@ -4,37 +4,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-//import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import assignment2.assignment2.Controllers.StudentController;
-import assignment2.assignment2.Services.StudentService;
 import assignment2.assignment2.View.LoginInterface;
-import javafx.application.*;
-import javafx.stage.Stage;
 
 @SpringBootApplication
-public class Assignment2Application extends Application implements CommandLineRunner {
+public class Assignment2Application {
 
 	@Autowired
 	StudentController studentController;
-
-	private static ConfigurableApplicationContext springContext;
 	
 	public static void main(String[] args) {
-		springContext = SpringApplication.run(Assignment2Application.class, args);
-		System.out.println(springContext);
+		//SpringApplication.run(Assignment2Application.class, args);
+	    ConfigurableApplicationContext context = new SpringApplicationBuilder(Assignment2Application.class).headless(false).run(args);
+	    LoginInterface loginInterface = context.getBean(LoginInterface.class);
+	    
 	}
 	
+	/*
 	@Override
 	public void run(String... args) {
-		System.out.println(studentController.test());
-		//this.launch(args);
+		//System.out.println(studentController.test());
+		//Student test = new Student();
+		//test.setName("testAppInsert2");
+		//test.setCnp("1111");
+		//test.setGr(7);
+		//studentController.insertTest(test);
+		LoginInterface loginInterface = new LoginInterface();
+		loginInterface.show();
 	}
-	
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-		
-		System.out.println(studentController.test());
-	}
+	*/
 }

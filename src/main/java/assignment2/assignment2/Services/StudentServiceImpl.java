@@ -25,4 +25,20 @@ public class StudentServiceImpl implements StudentService{
 		}
 		return Optional.empty();
 	}
+	
+	public void insertStudent(Student student) {
+		studentRepository.save(student);
+	}
+	
+	public Iterable<Student> getStudents(){
+		return studentRepository.findAll();
+	}
+
+	public void deleteStudent(Student student) {
+		studentRepository.delete(student);
+	}
+
+	public Student updateStudent(Student student) {
+		return studentRepository.save(student);
+	}
 }

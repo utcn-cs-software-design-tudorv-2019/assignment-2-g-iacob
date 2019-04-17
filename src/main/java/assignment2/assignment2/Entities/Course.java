@@ -1,5 +1,6 @@
 package assignment2.assignment2.Entities;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,27 +12,22 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-//import assignment2.assignment2.Entities.Enrolment;
-
 @Entity
-@Table(name = "student")
-public class Student {
-	
+@Table(name = "course")
+public class Course {
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column (name = "id")
 	private Integer id;
-
-    @Column (name = "name")
-    private String name;
-    
-    @Column (name = "cnp")
-    private String cnp;
-    
-    @Column (name = "gr")
-    private Integer gr;
-    
-    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
+	
+	@Column
+	String tutor_name;
+	
+	@Column
+	Date exam_date;
+	
+	@OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
     private List<Enrolment> enrolments;
 
 	public Integer getId() {
@@ -42,28 +38,20 @@ public class Student {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getTutor_name() {
+		return tutor_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTutor_name(String tutor_name) {
+		this.tutor_name = tutor_name;
 	}
 
-	public String getCnp() {
-		return cnp;
+	public Date getExam_date() {
+		return exam_date;
 	}
 
-	public void setCnp(String cnp) {
-		this.cnp = cnp;
-	}
-
-	public Integer getGr() {
-		return gr;
-	}
-
-	public void setGr(Integer gr) {
-		this.gr = gr;
+	public void setExam_date(Date exam_date) {
+		this.exam_date = exam_date;
 	}
 
 	public List<Enrolment> getEnrolments() {
@@ -73,7 +61,5 @@ public class Student {
 	public void setEnrolments(List<Enrolment> enrolments) {
 		this.enrolments = enrolments;
 	}
-    
-    
 	
 }

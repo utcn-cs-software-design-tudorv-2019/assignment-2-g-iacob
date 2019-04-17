@@ -21,4 +21,8 @@ public class StudentController {
 		else
 			return "ERROR 404: Student not found";
 	}
+	
+	public void insertTest(Student student) {
+		studentService.insertStudent(student);
+	}
 }
