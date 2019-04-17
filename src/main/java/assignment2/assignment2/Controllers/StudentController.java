@@ -22,7 +22,23 @@ public class StudentController {
 			return "ERROR 404: Student not found";
 	}
 	
-	public void insertTest(Student student) {
+	public boolean validLogin(String name) {
+		return studentService.findStudentByName(name).isPresent();
+	}
+	
+	public void insertTest() {
+		Student student = new Student();
+		student.setName("TestIF");
 		studentService.insertStudent(student);
+	}
+	
+	public void deleteTest() {
+		try {
+			studentService.deleteStudentById(1);
+		}
+		catch (Exception e) {
+			// no student with given ID
+		}
+		
 	}
 }

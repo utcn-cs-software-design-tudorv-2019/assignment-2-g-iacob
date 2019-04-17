@@ -27,6 +27,17 @@ public class Course {
 	@Column
 	Date exam_date;
 	
+	@Column
+	String name;
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	@OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
     private List<Enrolment> enrolments;
 

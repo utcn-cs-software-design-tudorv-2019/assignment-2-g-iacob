@@ -11,4 +11,5 @@ public interface StudentService {
 	public Iterable<Student> getStudents();
 	public void deleteStudent(Student student);
 	public Student updateStudent(Student student);
+	public void deleteStudentById(Integer id);
 }
